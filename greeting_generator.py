@@ -27,14 +27,14 @@ def run():
         
         # AI 모델 선택
         model_provider = st.radio(
-            "□ AI모델 선택",
+            "🤖 AI모델 선택",
             ["OpenAI GPT", "Google Gemini"]
         )
         
         # 공통 설정
-        temperature = st.slider("□ 창의성 수준", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
+        temperature = st.slider("⚙️ 창의성 수준", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
         greeting_length = st.select_slider(
-            "인사말 길이",
+            "⚙️ 인사말 길이",
             options=["짧게 (1-2분)", "중간 (3-5분)", "길게 (5-7분)"]
         )
         
@@ -76,7 +76,7 @@ def run():
     h2 {
         font-size: 18px !important;
         margin-top: 10px !important;
-        margin-bottom: 5px !important;
+        margin-bottom: 10px !important;
     }
     h3 {
         font-size: 16px !important;
@@ -85,7 +85,7 @@ def run():
     }
     /* 스트림릿 컨테이너 간격 조정 */
     .element-container {
-        margin-top: 0.05rem !important;
+        margin-top: -0.5rem !important;
         margin-bottom: 0.1rem !important;
     }
     /* 마크다운 간격 조정 */
@@ -98,7 +98,8 @@ def run():
     }
     /* 텍스트 영역 아래 간격 줄이기 */
     .stTextArea {
-        margin-bottom: 0.5rem !important;
+        margin-top: -2rem !important;
+        margin-bottom: 2rem !important;        
     }
     /* 제목 간격 줄이기 */
     .markdown-text-container {
@@ -242,7 +243,7 @@ def run():
         st.markdown("##### 인사말씀의 주요 내용")
         core_content = st.text_area("", 
                                 value=st.session_state.greeting_core_content,
-                                height=120,
+                                height=150,
                                 placeholder="인사말씀에 포함할 주요 내용, 행사 정보, 특별 안내사항 등을 입력하세요")
         
         # 옵션 선택 영역

@@ -14,7 +14,24 @@ def main():
     st.markdown("""
     <style>
     .main-title {
-        font-size: 28px !important;
+        font-size: 40px !important;
+        font-weight: bold;
+    }
+    .sidebar .block-container {
+        padding-left: 80px;
+    }
+    /* selectbox 화살표 숨기기 */
+    div[data-baseweb="select"] > div {
+        box-shadow: none !important;
+        background-image: none !important;
+    }
+    /* selectbox 테두리 제거 */
+    div[role="listbox"] ul {
+        border: none !important;
+    }
+    /* 선택 항목 색상 변경 */
+    .stSelectbox [data-baseweb="select"] {
+        border: none !important;
         font-weight: bold;
     }
     </style>
@@ -22,17 +39,24 @@ def main():
     
     st.markdown('<p class="main-title">남양주시 AI 콘텐츠 생성기</p>', unsafe_allow_html=True)
     
-    # 사이드바에 앱 선택 옵션 추가
+    # 앱 옵션들 정의 
+    app_options = ["AI 인사말씀 생성기", "AI 보도자료 생성기"]
+    
+    # 사이드바에 앱 선택 옵션 추가 (selectbox를 텍스트처럼 보이게 함)
+    st.sidebar.markdown("## 📱 애플리케이션 선택")
+    
+    # 선택 상자를 사용하지만 텍스트처럼 보이게 스타일링
     app_choice = st.sidebar.selectbox(
-        "□ 애플리케이션 선택",
-        ["보도자료 생성기", "인사말씀 생성기"]
+        "",
+        app_options,
+        label_visibility="collapsed"  # 라벨 숨기기
     )
     
     # 선택된 앱 실행
-    if app_choice == "보도자료 생성기":
-        press_release.run()
-    elif app_choice == "인사말씀 생성기":
+    if app_choice == "AI 인사말씀 생성기":
         greeting_generator.run()
+    elif app_choice == "AI 보도자료 생성기":
+        press_release.run()
 
 if __name__ == "__main__":
     main()

@@ -27,12 +27,12 @@ def run():
         
         # AI 모델 선택
         model_provider = st.radio(
-            "□ AI모델 선택",
-            ["OpenAI GPT", "Google Gemini"]
+            "🤖 AI모델 선택",
+            ["OpenAI GPT4o", "Google Gemini-2.0"]
         )
         
         # 공통 설정
-        temperature = st.slider("□ 창의성 수준", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
+        temperature = st.slider("⚙️ 창의성 수준", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
         
         st.divider()
         st.caption("© 2025 남양주시 AI 보도자료 생성기")
@@ -101,6 +101,8 @@ def run():
         margin-top: 0rem !important;
         margin-bottom: 0rem !important;
     }
+    
+    /* 스타일 제거 - 이전 섹션 구분용 스타일 제거 */
     </style>
     """, unsafe_allow_html=True)
 
@@ -108,7 +110,7 @@ def run():
     if "core_content" not in st.session_state:
         st.session_state.core_content = ""
     if "keywords" not in st.session_state:
-        st.session_state.keywords = ["", "", "", "", ""]
+        st.session_state.keywords = ["", "", "", "", "", ""]  # 키워드 6개로 늘림
     if "titles" not in st.session_state:
         st.session_state.titles = []
     if "selected_title" not in st.session_state:
@@ -242,7 +244,9 @@ def run():
 
     # 좌측 컬럼 - 입력 영역
     with left_col:
+        # 일반 텍스트로 섹션 제목 표시
         st.subheader("< 입력 >")
+        
         # 핵심 내용 입력
         st.markdown("##### 핵심 내용")
         core_content = st.text_area("", 
@@ -251,9 +255,9 @@ def run():
                                 placeholder="보도자료에 포함할 핵심 내용을 입력하세요")
 
         # 키워드 입력
-        st.markdown("##### 키워드 (최대 5개)")
+        st.markdown("##### 키워드 (최대 6개)")
         
-        # 2개의 하위 컬럼으로 키워드 입력 필드 배치
+        # 2개의 하위 컬럼으로 키워드 입력 필드 배치 (3개씩)
         kw_col1, kw_col2 = st.columns(2)
         
         with kw_col1:
@@ -265,7 +269,7 @@ def run():
                                                         placeholder=f"키워드 {i+1}")
 
         with kw_col2:
-            for i in range(3, 5):
+            for i in range(3, 6):  # 3~5 인덱스 사용 (6개 키워드)
                 st.session_state.keywords[i] = st.text_input(f"키워드 {i+1}", 
                                                         value=st.session_state.keywords[i],
                                                         key=f"keyword_{i}",
@@ -275,15 +279,18 @@ def run():
         # 핵심 내용과 키워드 저장
         st.session_state.core_content = core_content
         
+        # 입력 영역 종료 (div 태그 제거)
 
     # 우측 컬럼 - 결과 출력 영역
     with right_col:
+        # 일반 텍스트로 섹션 제목 표시
         st.subheader("< 결과 >")
+        
         # 제목 생성 버튼
         if st.button("제목 생성하기", type="primary"):
             with st.spinner("창의적인 제목을 생성하고 있습니다..."):
                 try:
-                    if model_provider == "OpenAI GPT":
+                    if model_provider == "OpenAI GPT4o":  # 모델명 업데이트
                         st.session_state.titles = generate_titles_with_openai(
                             core_content, 
                             st.session_state.keywords,
@@ -323,7 +330,7 @@ def run():
                 if st.button("보도자료 생성하기", type="primary"):
                     with st.spinner("보도자료를 생성하고 있습니다..."):
                         try:
-                            if model_provider == "OpenAI GPT":
+                            if model_provider == "OpenAI GPT4o":  # 모델명 업데이트
                                 st.session_state.press_release = generate_press_release_with_openai(
                                     st.session_state.selected_title,
                                     core_content,
@@ -369,8 +376,10 @@ def run():
                 with btn_col2:
                     if st.button("새 보도자료 작성"):
                         st.session_state.core_content = ""
-                        st.session_state.keywords = ["", "", "", "", ""]
+                        st.session_state.keywords = ["", "", "", "", "", ""]  # 키워드 6개로 늘림
                         st.session_state.titles = []
                         st.session_state.selected_title = ""
                         st.session_state.press_release = ""
                         st.rerun()
+        
+        # 결과 영역 종료 (div 태그 제거)
