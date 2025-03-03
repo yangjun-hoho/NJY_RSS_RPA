@@ -111,7 +111,7 @@ def run():
         st.subheader("방명록 관리")
         
         admin_password = st.text_input("관리자 비밀번호", type="password")
-        ADMIN_PASSWORD = "admin1234"  # 실제 사용 시 더 강력한 비밀번호로 변경하세요
+        ADMIN_PASSWORD = "203843"  # 실제 사용 시 더 강력한 비밀번호로 변경하세요
         
         if admin_password == ADMIN_PASSWORD:
             st.success("관리자 인증 성공")
