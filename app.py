@@ -119,10 +119,6 @@ def main():
         count_app_usage("문서 PPT 변환기")
         ppt_generator.run()
         
-    elif app_choice == "(생성형AI) 엑셀 정리하기":
-        count_app_usage("엑셀 정리하기")
-        excel_formatter.run()
-        
     elif app_choice == "(NYJ_RPA) 폐기물스티커 판매정산":
         count_app_usage("폐기물스티커 판매정산")
         waste_sticker_intro.run()
