@@ -1,0 +1,9 @@
+streamlit
+openai
+google-generativeai
+python-dotenv
+PyPDF2
+Pillow
+gtts
+edge_tts
+python-pptx
