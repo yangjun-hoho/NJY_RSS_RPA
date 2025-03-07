@@ -7,3 +7,4 @@ Pillow
 gtts
 edge_tts
 python-pptx
+python-docx
