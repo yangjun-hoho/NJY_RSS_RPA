@@ -18,7 +18,6 @@ import guestbook
 import tts_generator
 import ppt_generator
 import excel_formatter  # 엑셀 정리 모듈 import
-import report_generator  # 보고서/계획서 생성기 모듈 import
 from usage_counter import count_app_usage, admin_stats_page
 
 # 관리자 인증 함수
@@ -123,10 +122,6 @@ def main():
     elif app_choice == "(생성형AI) 엑셀 정리하기":
         count_app_usage("엑셀 정리하기")
         excel_formatter.run()
-    
-    elif app_choice == "(생성형AI) 보고서/계획서 생성기":
-        count_app_usage("보고서/계획서 생성기")
-        report_generator.run()
         
     elif app_choice == "(NYJ_RPA) 폐기물스티커 판매정산":
         count_app_usage("폐기물스티커 판매정산")
