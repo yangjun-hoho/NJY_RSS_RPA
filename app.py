@@ -19,7 +19,6 @@ import tts_generator
 import ppt_generator
 import excel_formatter  # 엑셀 정리 모듈 import
 import report_generator  # 보고서 생성기 모듈 import
-import document_visualizer  # 문서 데이터 시각화 프로그램 import
 from usage_counter import count_app_usage, admin_stats_page
 
 # 관리자 인증 함수
