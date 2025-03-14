@@ -188,7 +188,7 @@ def run():
     if st.session_state.report_template:
         try:
             st.markdown(f'<div class="small-header">2. 보고서 내용 입력</div>', unsafe_allow_html=True)
-            st.caption("*제목만 입력해도 AI가 보고서를 생성하지만 입력내용이 풍부하면 더 잘 생성합니다.")
+            st.caption("*제목만 입력해도 AI가 보고서를 생성하며, 특히 AI가 작성한 데이터, 수치는 임의적 예시로 작성된 것임을 유의하시길 바랍니다.")
             st.markdown(f'<div class="section-header">{st.session_state.report_type} - {st.session_state.report_template}</div>', unsafe_allow_html=True)
             
             templates = get_templates_for_type(st.session_state.report_type)
