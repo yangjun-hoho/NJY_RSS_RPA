@@ -28,7 +28,7 @@ def run():
         )
         
         # 공통 설정
-        temperature = st.slider("⚙️ 창의성 수준", min_value=0.0, max_value=1.0, value=0.7, step=0.1)
+        temperature = st.slider("⚙️ 창의성 수준", min_value=0.0, max_value=1.0, value=1.0, step=0.1)
         
         st.divider()
         st.caption("© 2025 남양주시 AI보고서 생성기")
